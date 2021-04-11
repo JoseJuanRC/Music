@@ -35,6 +35,7 @@ public class SoundBall {
     colorA = 100;
   }
   
+  // Movemos y dibujamos la bola
   public void drawBall(){
     if (this.y>this.yVanishValue) 
       colorA = (int)map(this.y, this.yVanishValue, this.yMax, 100, 10);
@@ -43,15 +44,19 @@ public class SoundBall {
     circle(x,y,diametro);
   }
   
+  // Comprobamos si se encuentra en el límite de la ventana
   public boolean checkLimit() {
     return (y>yMax-diametro);
   }
+  
+  // Métodos para reproducir
   
   public void play() {
     int dynamic = (int)map(y, 0, height, 25, 75);
     sc.playNote(pitch, dynamic, duration);
   }
   
+  // Caso especifico para el último sonido
   public void playLastOne() {
     int dynamic = (int)map(y, 0, height, 25, 75);
     sc.playNote(pitch, dynamic, duration/5);
