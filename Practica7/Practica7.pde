@@ -31,11 +31,17 @@ void draw(){
     text("Pulsa r para volver a escuchar",width/2,height/2); 
   } else {
      background(240,240,255);
+     
+     // Comprobamos si añadimos nuevas bolas
      checkSound();
+     
+     // Si existen bolas las movemos y dibujamos
      if (list.size()>0) {
        for (SoundBall ball : list) {
          ball.drawBall();
        }
+       
+       // Comprobamos si la primera de la lista ya ha llegado al limite para reproducirla
        SoundBall ball = list.get(0);
        if (ball.checkLimit()) {
          if (list.size() == 1 && ind>=pitch.length) {
@@ -68,7 +74,7 @@ void intro() {
   text("r:                   Resetear",width/20,height/2.8);  
   text("UP/DOWN:   Cambiar la velocidad de reproducción",width/20,height/2.6); 
   text("0) Original                       1) Acoustic Grand Piano\n" +
-       "2) Harmonica                  4) Electric Jazz Guitar\n" +
+       "2) Harmonica                  3) Electric Jazz Guitar\n" +
        "4) Violin                           5) Tuba\n" +
        "6) Whistle                        7) Crystal Effect\n" +
        "8) Goblins Effect             9) Tinkle Bell\n",width/4,height/1.75);  
@@ -134,6 +140,5 @@ void keyPressed(){
     sc.instrument = 102; // Goblins Effect
   if (key == '9')
     sc.instrument = 113; // Tinkle Bell
-
 
 }
